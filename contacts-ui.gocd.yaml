@@ -1,10 +1,10 @@
 environments:
   contacts-ui-docker:
     pipelines:
-      - frontend-package
+      - frontend-package1
 
 pipelines:
-  frontend-compile:
+  frontend-compile1:
     group: contacts-app
     materials:
       mygit:  # this is the name of material
@@ -25,11 +25,11 @@ pipelines:
                     source: build
               resources:
                 - yarn
-  frontend-package:
+  frontend-package1:
     group: contacts-app
     materials:
       compilation:
-        pipeline: frontend-compile
+        pipeline: frontend-compile1
         stage: build
       mygit:
         git: https://github.com/prafulkodali/contacts-ui.git
@@ -39,7 +39,7 @@ pipelines:
             build:
               tasks:
                 - fetch:
-                   pipeline: frontend-compile
+                   pipeline: frontend-compile1
                    stage: build
                    job: build
                    source: build
